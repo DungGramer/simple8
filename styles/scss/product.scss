@@ -1,0 +1,37 @@
+$y: 0px;
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 62.5%;
+}
+ul {
+	li{
+		list-style: none;
+	}
+}
+.product__image {
+	display: flex;
+}
+.product__image-left--slide {
+	height: 600px;
+	overflow: hidden;
+	.product__image-left--img{
+		display: table;
+		img {
+			width: 100px;
+			height: 150px;
+			object-fit: cover;
+			cursor: pointer;			
+		}
+	}
+}
+.product__image-main {
+	height: 500px;
+	width: 500px;
+	background-size: cover;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+}
