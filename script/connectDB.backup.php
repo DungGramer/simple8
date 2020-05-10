@@ -4,23 +4,21 @@
 		private $password = "";
 		private $host = "localhost";
 		private $database = "simple8";
-		private static $connect = null;
+
 		//Kết nối Database
 		function connection() {
-			if(self::$connect == NULL) {
-				self::$connect= new mysqli($this->host, $this->user, $this->password, $this->database);
-				if(self::$connect->connect_error){
-					die("connection is error");
-				}
-			} return self::$connect;
+			$connect= new mysqli($this->host, $this->user, $this->password, $this->database);
+			if($connect->connect_error){
+				die("connection is error");
+			} return $connect;
 		}
 
 		function disconnection() {
-			self::$connect = $this->connection();
-			self::$connect->close();
+			$connect = $this->connection();
+			$connect->close();
 		}
 		function __construct(){
-			self::$connect = $this->connection();
+			$this->connection();
 		}
 		function printData($query){
 			$connect = $this->connection();
@@ -70,6 +68,6 @@
 		fclose($fp);
 		}*/
 		function __destruct(){
-			self::$connect = $this->disconnection();
+			$this->disconnection();
 		}
 	}

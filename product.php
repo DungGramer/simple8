@@ -16,7 +16,7 @@
 		require_once('./module/header.php');
 		$database = new database();
 		//Lấy cột ảnh ra file JSON
-		$arrImage = $database->SQLtoJSON('SELECT Image FROM Product', 'image-URL');
+		// $arrImage = $database->SQLtoJSON('SELECT Image FROM Product', 'image-URL');
 	?>
 	<section class="product__image">
 		<div class="container">
