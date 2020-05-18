@@ -87,11 +87,34 @@
 .size {
 	min-width: 25px;
 	min-height: 25px;
-	border: 1px solid rgb(0, 0, 0);
 	margin: 10px 2px;
 	cursor: pointer;
 	padding: 3px;
 	text-align: center;
+}
+.size input[type="radio"]:not(:checked), 
+.size input[type="radio"]:checked {
+  position: absolute;
+  left: -9999%;
+}
+
+.size input[type="radio"] + label {
+  display: inline-block;
+	/* padding: 10px; */
+	width: 38px;
+	height: 38px;
+	padding-top: 8px;
+  cursor: pointer;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+	margin: 0 10px 10px 0;
+}
+
+.size input[type="radio"]:checked + label {
+  border: 1px solid white;
+  color: white;
+  background-color: black;
 }
 .description {
 	font-size: 1rem;

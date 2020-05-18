@@ -24,21 +24,6 @@
 			return $arr;
 		}
 
-		//Xuất Table SQL ra JSON
-		function SQLtoJSON($query, $nameFile) {
-			$connect = $this->connection();
-			$json_array = $this->printData($query);
-
-			//Chuyển mảng thành JSON, có Unicode và format đẹp
-			$json = json_encode($json_array,\JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-			mysqli_close($connect);
-
-			//Ghi vào file simple8.json
-			$fp = fopen('database/'.$nameFile.'.json', 'w');
-			fwrite($fp, $json);
-			fclose($fp);
-		}
-
 		function getOutArr($arr, $index) {
 			$newArr = [];
 			foreach($arr as $key=>$value) {
@@ -46,6 +31,49 @@
 			}
 			return $newArr;
 		}
+
+		function printTypeProduct($query, $arr) {
+			$query = $this->printData($query);
+			$query = $this->getOutArr($query, $arr);
+			$query = array_unique($query);
+			return $query;
+		}
+
+		function covertVI($str) {
+			switch ($str) {
+				case 'do':
+					$str = 'Đỏ';
+					break;
+				case 'xam':
+					$str = 'Xám';
+				break;
+				case 'sm':
+					$str = 'Áo sơ mi';
+				break;
+				case 'den':
+					$str = 'Đen';
+				break;
+				default:
+					# code...
+					break;
+			}
+			return $str;
+		}
+
+		//Xuất Table SQL ra JSON
+		// function SQLtoJSON($query, $nameFile) {
+		// 	$connect = $this->connection();
+		// 	$json_array = $this->printData($query);
+
+		// 	//Chuyển mảng thành JSON, có Unicode và format đẹp
+		// 	$json = json_encode($json_array,\JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+		// 	mysqli_close($connect);
+
+		// 	//Ghi vào file simple8.json
+		// 	$fp = fopen('database/'.$nameFile.'.json', 'w');
+		// 	fwrite($fp, $json);
+		// 	fclose($fp);
+		// }
 
 		/*Xuất table JSON ra cột JSON
 		function tableToColumn($path, $item) {

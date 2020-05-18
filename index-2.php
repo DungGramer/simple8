@@ -59,7 +59,7 @@
 		<h2 class="sub-headline">Lựa chọn</h2>
 		<h1 class="headline headline-dark">kiểu dáng</h1>
 		<div class="container">
-			<div class="div3 man" style="background-image: url('./img/files/men.jpg');" onClick="window.location='./product.php';"></div>
+			<div class="div3 man" style="background-image: url('./img/files/men.jpg');" onClick="window.location='./product.php?type=sm';"></div>
 			<div class="div3 women" style="background-image: url('./img/files/women.jpg');"onClick="window.location='./product.php';"></div>
 			<div class="div3 shoes" style="background-image: url('./img/files/shoes.jpg');"onClick="window.location='./product.php';"></div>
 		</div>
