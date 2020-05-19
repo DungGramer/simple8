@@ -1,133 +1,23 @@
-header {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	background-color: rgba(255, 255, 255, 0.92);
-	transition: all 0.3s;
+.header__nav-link {
+	font-size: 1.5rem;
+	font-family: Montserrat;
 }
-
-.nav {
-	height: 4.5rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.header__logo{
+	flex: 1.1;
 }
-
-.menu-toggle {
-	color: var(--dark);
-	font-size: 1.4rem;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 2.5rem;
+.header__content {
+	flex: 1;
+}
+.cart .fa-shopping-cart {
+	padding-right: 10px;
+	font-size: 2rem;
 	cursor: pointer;
-	z-index: 1500;
 }
-.fa-times {
-	color: var(--light);
-	display: none;
+.cart .cart__quantity {
+	align-self: center;
+	text-align: center;
+	vertical-align: top;
 }
-/* Nav-bar */
-.nav-list {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 45%;
-	height: 100vh;
-	background-color: var(--light);
-	padding: 2.4rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	z-index: 1250;
-	transform: translateX(-100%);
-	transition: transform 0.3s;
-}
-/* Background dark Navbar */
-.nav::before {
-	content: '';
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.4);
-	z-index: 1000;
-	transform: scale(0);
-	transition: opacity 0.3s;
-}
-/* When have class open -> Navbar open -> show X, hide menu*/
-.open .fa-times {
-	display: block;
-}
-.open .fa-bars {
-	display: none;
-}
-.open .nav-list {
-	transform: translateX(0);
-}
-.open .nav::before {
-	opacity: 1;
-	transform: scale(1);
-}
-/* underline text menu */
-.nav-item {
-	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-}
-.nav-link {
-	display: block;
-	color: #000;
-	text-transform: uppercase;
-	font-size: 1rem;
-	letter-spacing: 2px;
-	margin-right: -2px;
-	transition: color 0.3s;
-	padding-bottom: 2px;
-}
-.nav-link:hover {
-	color: var(--main-color);
-}
-/* Media queries */
-@media screen and (min-width: 900px) {
-	.menu-toggle {
-		display: none;
-	}
-	.nav {
-		justify-content: space-between;
-	}
-	.nav-list {
-		position: initial;
-		width: initial;
-		height: initial;
-		background-color: transparent;
-		padding: 0;
-		justify-content: initial;
-		flex-direction: row;
-		transform: initial;
-		transition: initial;
-	}
-	.nav-item {
-		margin: 0 1.4rem;
-		border: none;
-	}
-	.nav-item:last-child {
-		margin-right: 0;
-	}
-	.nav-link {
-		font-size: 0.9rem;
-	}
-	.active {
-		position: relative;
-	}
-	.active::before {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 2px;
-		background-color: var(--dark);
-		left: 0;
-		bottom: -3px;
-	}
+.header__button {
+
 }
