@@ -39,25 +39,17 @@
 			return $query;
 		}
 
-		function covertVI($str) {
-			switch ($str) {
-				case 'do':
-					$str = 'Đỏ';
-					break;
-				case 'xam':
-					$str = 'Xám';
-				break;
-				case 'sm':
-					$str = 'Áo sơ mi';
-				break;
-				case 'den':
-					$str = 'Đen';
-				break;
-				default:
-					# code...
-					break;
-			}
-			return $str;
+		function insertData($query) {
+			$connect = $this->connection();
+			return mysqli_query($connect, $query);
+		}
+
+		function vndFormat($priceFloat) {
+			$symbol = 'đ';
+			$symbol_thousand = '.';
+			$decimal_place = 0;
+			$price = number_format($priceFloat, $decimal_place, '', $symbol_thousand);
+			return $price.$symbol;
 		}
 
 		//Xuất Table SQL ra JSON
@@ -90,3 +82,20 @@
 		}*/
 
 	}
+	$covertVI = [
+		// Màu sắc
+		'hong' => 'Hồng',
+		'trang' => 'Trắng',
+		'xam' => 'Xám',
+		'xanhduong' => 'Xanh dương',
+		'vang' => 'Vàng',
+		'do' => 'Đỏ',
+		'xanhla' => 'Xanh lá',
+		'den' => 'Đen',
+		'xanhbien' => 'Xanh biển',
+		'xanhhaiquan' => 'Xanh hải quân',
+		// Phân loại
+		'nam' => 'Đồ Nam',
+		'nu' => 'Đồ Nữ',
+		'giay' => 'Giày'
+	];

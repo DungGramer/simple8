@@ -1,0 +1,70 @@
+a, button, input {
+	outline: medium none;
+	color: #686868;
+}
+button, input {
+	overflow: visible;
+}
+.login-form-container {
+	background: transparent none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	padding: 60px 40px;
+	text-align: left;
+}
+.login-form-container input {
+	background: #ffffff none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: none;
+	color: #999;
+	font-size: 14px;
+	height: 40px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+}
+.login-toggle-btn {
+	padding-top: 10px;
+}
+.login-form-container input[type="checkbox"] {
+	height: 15px;
+	margin: 0;
+	position: relative;
+	top: 1px;
+	width: 17px;
+}
+.login-form-container label {
+	color: #777;
+	font-size: 15px;
+	font-weight: 400;
+}
+.login-toggle-btn > a {
+	color: #777;
+	float: right;
+	transition: all 0.3s ease 0s;
+}
+.button-box .default-btn {
+	background: transparent none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	color: #777;
+	font-size: 14px;
+	line-height: 1;
+	margin-top: 25px;
+	padding: 12px 36px 10px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	border-radius: 50px;
+}
+.button-box .default-btn:hover {
+	background-color: #050035;
+	border: 1px solid #050035;
+	color: #fff;
+}
+
+.register {
+	float: right;
+}
+.register:hover {
+	text-decoration: none;
+}

@@ -1,0 +1,39 @@
+.color {
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	margin-right: 8px;
+	cursor: pointer;
+	display: inline-flex;
+}
+.color-do {
+	background-color: #bb3a32;
+}
+.color-den {
+	background-color: #000;
+}
+.color-xam {
+	background-color: var(--gray);
+}
+.color-xanhbien {
+	background-color: var(--blue);
+}
+.color-xanhhaiquan {
+	background-color: #071721;
+}
+.color-hong {
+	background-color: #FFCDD2;
+}
+.color-xanhla {
+	background-color: #2DCC70;
+}
+.color-xanhduong {
+	background-color: #425dff;
+}
+.color-trang {
+	border: 1px solid #000;
+}
+.color-vang {
+	background-color: rgb(252, 225, 117);
+	
+}

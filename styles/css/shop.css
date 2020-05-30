@@ -1,0 +1,81 @@
+.shop .row3 {
+	margin-bottom: 30px;
+}
+/* Title */
+.shop h3 {
+	margin-bottom: 20px;
+}
+/* Color */
+.color-wrapper {
+	margin: 10px 0;
+}
+/* Size */
+.size {
+	display: inline-flex;
+	padding-right: 16px;
+	font-size: 1.2rem;
+}
+.size-wrapper a {
+	color: var(--f-black);
+}
+.size-wrapper a:hover {
+	text-decoration: none;
+	color: var(--f-black-hover);
+
+}
+/* Product */
+.shop .container-fluid {
+	padding: 0 50px;
+}
+.product-img {
+	width: 100%;
+	height: 400px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.shop .product-wrapper {
+	margin-bottom: 30px;
+}
+.shop .product-wrapper a {
+	text-decoration: none;
+	color: var(--f-black);
+}
+.shop .col-sm-3 a:hover {
+	color: var(--f-black-hover);
+}
+.product-content {
+	padding-top: 23px;
+}
+.product-content h4 {
+	margin-bottom: 6px;
+	font-weight: 400;
+}
+/* Pagination */
+.pagination > li > a{
+	color: var(--c-base);
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+	color: #5a5a5a;
+	background-color: #eee;
+	border-color: #ddd;
+	outline: none;
+}
+.pagination > .active > a
+{
+	color: white;
+	background-color: var(--c-base-hover) !Important;
+	border: solid 1px var(--c-base-hover) !Important;
+	outline: none;
+}
+
+.pagination > .active > a:hover
+{
+	background-color: var(--c-base-hover) !Important;
+	border: solid 1px var(--c-base-hover);
+	outline: none;
+}

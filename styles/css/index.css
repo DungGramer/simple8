@@ -1,287 +1,42 @@
-.main {
-	width: 100%;
-	height: 100vh;
-	background: url("./../../img/files/background.jpg") center no-repeat;
-	background-size: cover;
-	display: flex;
-	align-items: center;
-	text-align: center;
+.carousel-caption-men {
+	text-align: left !important;
+	right: 0 !important;
+	left: 0 !important;
+	transform: translate(50px, -80px);
 }
-/* Name shop */
-.headline {
-	color: #fff;
-	font-size: 2.8rem;
-	font-family: var(--main-font);
-	text-transform: uppercase;
+.carousel__title--men {
 	font-weight: 400;
-	letter-spacing: 0.6rem;
-	margin-right: -0.5rem;
-	animation: scale 0.5s forwards;
+	font-size: 5rem;
+}
+.carousel__button {
+	font-size: 1.7rem;
+	border-radius: 20px !important;
+	padding: 8px 30px !important;
 }
 
-/* div line and star */
-.separator {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.top-product .card {
+	width: 150px !important;
 }
-/* line around star */
-.line {
+.col-md-3 img{
+	flex: 1;
 	width: 100%;
-	max-width: 8.4rem;
-	height: 0.25rem;
-	background-color: #fff;
-	position: relative;
-	opacity: 0;
-	animation: grow 0.5s forwards;
-	animation-delay: 1.2s;
+	margin: 0 auto;
 }
 
 
-.asterisk {
-	font-size: 1.2rem;
-	color: var(--light);
-	margin: 0 1.6rem;
-	opacity: 0;
-	animation: spin 0.5s forwards;
-	animation-delay: 0.7s;
+.top-product .col-md-3 img {
+	transition: all .2s ease-in-out;
 }
-
-.single-animation {
-	opacity: 0;
-	animation: fadeDown 0.5s forwards;
-	animation-delay: 1.5s;
+.top-product .col-md-3 img:hover {
+	transform: scale(1.02);
 }
-
-.headline-description h5 {
-	color: #fff;
-	font-size: 1.4rem;
-	font-weight: 100;
-	text-transform: uppercase;
-	margin-bottom: 1rem;
-	letter-spacing: 3px;
-	margin-right: -3px;
-}
-
-/* Button */
-.btn {
-	display: inline-block;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin-right: -2px;
-}
-.cta-btn {
-	font-size: 1rem;
-	background-color: #fff;
-	padding: 0.9rem 1.5rem;
-	color: var(--body-font-color);
-	border-radius: 0.4rem;
-	transition: background-color 0.5s;
-}
-.cta-btn:hover,
-.cta-btn:focus {
-	color: #fff;
-	background-color: var(--main-color);
-}
-
-/* Discover our story */
-.global-headline {
+.top-product .col-md-3 h3 {
 	text-align: center;
-	/* margin-top: 3.9rem; */
+	font-weight: 400;
 }
-.discover-our-story .global-headline {
-	margin-top: 3rem;
-	margin-bottom: 2rem;
-}
-
-.global-headline .asterisk {
-	color: var(--font-color);
-	margin: 2.4rem 0;
-}
-
-.headline-dark {
-	color: var(--font-color-dark);
-	letter-spacing: 0.7rem;
-	margin-right: -0.7rem;
-	font-size: 2.5rem;
-}
-
-.global-headline .sub-headline {
-	font-size: 1.5rem;
-}
-
-.shop-info {
-	text-align: center;
-}
-.shop-description {
-	margin-bottom: 3rem;
-}
-.shop-description p {
-	line-height: 1.6;
-	margin: 1rem 0 2.4rem 0;
-	font-size: 1.1rem;
-}
-/* About us Button */
-.body-btn {
-	font-size: 1.2rem;
-	color: var(--main-color);
-	position: relative;
-}
-.body-btn::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	bottom: -3px;
-	width: 100%;
-	height: 2px;
-	background-color: var(--main-color);
-	transition: background-color 0.5s;	
-}
-.body-btn:hover,
-.body-btn:focus {
-	color: var(--font-color-dark);
-}
-
-.body-btn:hover::before,
-.body-btn:focus::before {
-	background-color: var(--font-color-dark);
-}
-
-.choose-3 {
-	text-align: center;
-
-}
-.choose-3 .container {
-	display: grid;
-	margin: 0;
-	padding: 0;
-	grid-template-rows: repeat(3, 1fr);
-}
-.man, .women, .shoes {
-	/* min-width: 33.33%; */
-	position: relative;
-	height: 65vh;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position-x: center;
-	cursor: pointer;
-}
-.shoes {
-	background-position: bottom;
-}
-.man, .women, .shoes {
-
-}
-/* Lựa chọn */
-.man::after,
-.women::after,
-.shoes::after {
-	position: absolute;
-	content: 'Lựa chọn';
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	transition: 0.3s;
-	font-size: 2rem;
-	opacity: 0;
-	color: var(--light);
-	
-}
-.man:hover::after,
-.women:hover::after,
-.shoes:hover::after {
-	opacity: 1;
-}
-.man:hover::before,
-.women:hover::before,
-.shoes:hover::before {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.2);
-}
-
-.choose-3 .headline-dark {
-	margin-bottom: 2rem;
-}
-
-@media screen and (min-width: 900px) {
-	.choose-3 .container {
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-		height: 75vh;
+@media screen and (max-width: 992px) {
+	.carousel__title--men {
+		font-weight: 400;
+		font-size: 2rem ;
 	}
-	.man, .women, .shoes {
-		height: 75vh;
-	}
-
-	section {
-		padding: 7.9rem;
-	}
-	.menu-toggle {
-		display: none;
-	}
-	.nav {
-		justify-content: space-between;
-	}
-	.nav-list {
-		position: initial;
-		width: initial;
-		height: initial;
-		background-color: transparent;
-		padding: 0;
-		justify-content: initial;
-		flex-direction: row;
-		transform: initial;
-		transition: initial;
-	}
-	.nav-item {
-		margin: 0 2.4rem;
-		border: none;
-	}
-	.nav-item:last-child {
-		margin-right: 0;
-	}
-	.nav-link {
-		font-size: 1.3rem;
-	}
-	.active {
-		position: relative;
-	}
-	.active::before {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 2px;
-		background-color: #fff;
-		left: 0;
-		bottom: -3px;
-	}
-
-	.sub-headline {
-		font-size: 10rem;
-	}
-	.first-letter {
-		font-size: 12.2rem;
-	}
-	.headline {
-		font-size: 4.7rem;
-		letter-spacing: 0.8rem;
-	}
-
-	.line {
-		max-width: 11.4rem;
-	}
-	.shop-info {
-		display: flex;
-		align-items: center;
-	}
-	.shop-info > div {
-		flex: 1;
-	}
-	.padding-right {
-		padding-right: 7rem;
-	}
-
 }
