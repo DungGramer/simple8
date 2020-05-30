@@ -1,0 +1,31 @@
+.login-form-container {
+	background: transparent none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	padding: 60px 40px;
+	text-align: left;
+}
+.login-form-container input {
+	background: #ffffff none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: none;
+	color: #999;
+	font-size: 14px;
+	height: 40px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+}
+.button-box .default-btn {
+	background: transparent none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	color: #777;
+	font-size: 14px;
+	line-height: 1;
+	margin-top: 25px;
+	padding: 12px 36px 10px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	border-radius: 50px;
+}

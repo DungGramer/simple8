@@ -23,6 +23,17 @@
 	margin: 0 auto;
 }
 
+
+.top-product .col-md-3 img {
+	transition: all .2s ease-in-out;
+}
+.top-product .col-md-3 img:hover {
+	transform: scale(1.02);
+}
+.top-product .col-md-3 h3 {
+	text-align: center;
+	font-weight: 400;
+}
 @media screen and (max-width: 992px) {
 	.carousel__title--men {
 		font-weight: 400;

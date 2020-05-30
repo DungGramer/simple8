@@ -1,5 +1,9 @@
 :root {
 	--main-font: 'Montserrat', sans-serif;
+	--c-base: #050035;
+	--c-base-hover: #03001f;
+	--f-black: #383838;
+	--f-black-hover: #807e7e;
 }
 html {
 	font-family: var(--main-font);
@@ -12,4 +16,22 @@ ul, li {
 }
 section {
 	padding-bottom: 5rem;
+}
+.cover {
+	position: relative;
+}
+.cover .container-fluid img {
+	height: 10vh;
+}
+.cover .container-fluid {
+	position: absolute;
+	top: 0;
+	display: flex;
+	margin: 0 auto;
+	height: 82%;
+	align-items: center;
+}
+.cover .container-fluid h2 {
+	margin: 0 auto;
+	color: #fff;
 }

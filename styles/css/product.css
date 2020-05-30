@@ -77,10 +77,12 @@
 .color-xanhhaiquan {
 	background-color: #071721;
 }
+.color-hong {
+	background-color: #FFCDD2;
+}
 .product__info h5 {
 	margin: 25px 0 5px;
 }
-
 .product__size {
 	display: flex;
 }
