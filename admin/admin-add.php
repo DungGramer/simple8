@@ -1,32 +1,27 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<title>Title</title>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	</head>
-	<body>
-		<?php 
-			require_once 'admin-header.php';
-			require_once '../script/connectDB.php';
-			$database = new database();
+<head>
+	<title>Title</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		?>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-		<div class="main-content">
-			<section class="section">
+<body>
+	<?php
+		require_once 'admin-header.php';
+		require_once '../script/connectDB.php';
+	?>
 
-				<div class="row">
+	<div class="main-content">
+		<section class="section">
+			<div class="row">
 				<form action="get-add.php" method="post" enctype="multipart/form-data">
 					<table>
-<!-- 						<tr>
-							<td>Mã sản phẩm</td>
-							<td><input required type="text" name="Product_id"></td>
-						</tr> -->
 						<tr>
 							<td>Tên sản phẩm</td>
 							<td><input required type="text" name="Name" placeholder="VD: Áo sơ mi"></td>
@@ -49,44 +44,44 @@
 							<td>Màu sắc</td>
 							<td>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="den" value="den">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="den" value="den">
 									<label class="form-check-label" for="den">Đen</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="trang" value="trang">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="trang" value="trang">
 									<label class="form-check-label" for="trang">Trắng</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="do" value="do">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="do" value="do">
 									<label class="form-check-label" for="do">Đỏ</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="vang" value="vang">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="vang" value="vang">
 									<label class="form-check-label" for="vang">Vàng</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="cam" value="cam">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="cam" value="cam">
 									<label class="form-check-label" for="cam">Cam</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="xanhla" value="xanhla">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="xanhla" value="xanhla">
 									<label class="form-check-label" for="xanhla">Xanh lá</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="xanhduong" value="xanhduong">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="xanhduong" value="xanhduong">
 									<label class="form-check-label" for="xanhduong">Xanh dương</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="xanhla" value="xanhla">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="xanhla" value="xanhla">
 									<label class="form-check-label" for="xanhla">Tím</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"name="Color[]" id="hong" value="hong">
+									<input class="form-check-input" type="checkbox" name="Color[]" id="hong" value="hong">
 									<label class="form-check-label" for="hong">Hồng</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<label class="form-check-label" for="other-color" name="Color[]">Khác</label>
-									<input class="form-check-input" type="checkbox" id="other-color" name="Color[]" onclick="changetoInput(event)" >
+									<input class="form-check-input" type="checkbox" id="other-color" name="Color[]" onclick="changetoInput(event)">
 								</div>
 							</td>
 						</tr>
@@ -134,24 +129,21 @@
 					</table>
 					<input type="submit" value="Lưu">
 				</form>
-				</div>
-			</section>
-		</div>
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script>
-			function changetoInput(event) {
-				// if(document.querySelector('#other-color').checked == true) {
-				// 	document.querySelector('#other-color').setAttribute('type', 'text'); 
-				// }
-				if (event.target.checked == true) {
-					event.target.setAttribute('type', 'text'); 
-				}
-				console.log(event);
+			</div>
+		</section>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script>
+		function changetoInput(event) {
+			// if(document.querySelector('#other-color').checked == true) {
+			// 	document.querySelector('#other-color').setAttribute('type', 'text'); 
+			// }
+			if (event.target.checked == true) {
+				event.target.setAttribute('type', 'text');
 			}
-		</script>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
+		}
+	</script>
+</body>
+
 </html>

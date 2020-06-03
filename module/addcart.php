@@ -1,10 +1,6 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) {
-		session_start();
-	}
 	if (isset($_GET)) {
 		require_once "../script/connectDB.php";
-		$database = new database();
 		$product = 'SELECT * FROM Product WHERE type="'.$_GET['type'].'" AND Color="'.$_GET['color'].'" AND Size="'.$_GET['size'].'" ';
 		$product = $database->printData($product);
 

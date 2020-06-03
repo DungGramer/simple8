@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 ?>
 <link rel="stylesheet" href="styles/css/header.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -59,12 +59,12 @@ if (session_status() == PHP_SESSION_NONE) {
 					<i class="header__nav-link fal fa-shopping-cart"></i>
 					<span class="cart__quantity">
 						<?php
-							//Set mặc định giỏ hàng = 0 nếu không có sản phẩm
-						 	if (!isset($_SESSION['count'])){
-								$_SESSION['count'] = 0;
-							}  
-							echo $_SESSION['count'];
-						 ?>		
+						//Set mặc định giỏ hàng = 0 nếu không có sản phẩm
+						if (!isset($_SESSION['count'])) {
+							$_SESSION['count'] = 0;
+						}
+						echo $_SESSION['count'];
+						?>
 					</span>
 				</a>
 				<ul class="cart-dropdown">
@@ -74,22 +74,22 @@ if (session_status() == PHP_SESSION_NONE) {
 						$_SESSION['total'] = 0;
 					}
 					if (isset($_SESSION['cart'])) {
-						foreach ($_SESSION['cart'] as $key=>$value) {
-							echo '<li class="product-cart">';
-							echo '<div class="cart-img">';
-							echo '<a href="#">';
-							echo '<div class="img" style="background-image: url(' . '\'img/products/' . $value['image'] . ' \'' . ');" ></div>';
-							echo '</a>';
-							echo '</div>';
-							echo '<div class="cart-title">';
-							echo '<h5><a href="shop.php?search='.$key.'">' . $value['name'] . '</a></h5>';
-							echo '<h6>' . $value['color'] . ' - ' . $value['size'] . '</h6>';
-							echo '<span class="price">' . $value['cost'] . '</span>';
-							echo '<span> x </span>';
-							echo '<span class="quantity">' . $value['quantity'] . '</span>';
-							echo '</div>';
-							echo '</li>';
-						}
+						foreach ($_SESSION['cart'] as $key => $value) : ?>
+							<li class="product-cart">
+								<div class="cart-img">
+									<a href="#">
+										<div class="img" style="background-image: url('img/products/<?= $value['image'] ?>');"></div>
+									</a>
+								</div>
+								<div class="cart-title">
+									<h5><a href="shop.php?search='.$key.'"><?= $value['name'] ?></a></h5>
+									<h6><?= $value['color'] . ' - ' . $value['size'] ?></h6>
+									<span class="price"><?= $value['cost'] ?></span>
+									<span> x </span>
+									<span class="quantity"><?= $value['quantity'] ?></span>
+								</div>
+							</li>
+					<?php endforeach;
 					}
 					?>
 
@@ -98,7 +98,7 @@ if (session_status() == PHP_SESSION_NONE) {
 							<h4>Tổng tiền:</h4>
 						</div>
 						<div class="cart-price">
-							<h4><?php echo vndFormat($_SESSION['total']) ?> </h4>
+							<h4><?= vndFormat($_SESSION['total']) ?></h4>
 						</div>
 					</li>
 					<li class="cart-btn-wrapper">

@@ -1,9 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
 	require_once '../script/connectDB.php';
-	$database = new database();
 
 	if ($_GET['register'] = true) {
 		// Nếu đăng ký

@@ -2,32 +2,23 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<title>Product | Simple8</title>
+	<?php require_once './module/header-meta.php' ?>
 	<link rel="stylesheet" href="styles/css/base.css">
 	<link rel="stylesheet" href="styles/css/color.css">
-	<link rel="stylesheet" href="styles/css/product2.css">
+	<link rel="stylesheet" href="styles/css/product.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-	<script src="script/all.min.js"></script>
 </head>
 
 <body>
 	<?php
-	require_once('./script/connectDB.php');
-	require_once('./module/header.php');
-	$database = new database();
+	require_once './script/connectDB.php';
+	require_once './module/header.php';
+	require_once './module/vndFormat.php';
 
-
-	if (!isset($_GET['color'])) {
-		$_GET['color'] = 'do';
-	}
+	// if (!isset($_GET['color'])) $_GET['color'] = 'do';
 	$pathIMGColor = 'SELECT Image FROM Product WHERE type="' . $_GET['type'] . '" AND Color="' . $_GET['color'] . '" ';
-	$pathIMGColor = $database->printData($pathIMGColor);
-	$pathIMGColor = $database->getOutArr($pathIMGColor, 'Image');
+	$pathIMGColor = $database->printTypeProduct($pathIMGColor, 'Image');
 
 	$color = $_GET['color'];
 	$image = "SELECT Image FROM Product";
@@ -38,7 +29,7 @@
 	//Tên sản phẩm
 	$nameProduct = 'SELECT Name FROM Product where type="' . $_GET['type'] . '"';
 	$nameProduct = $database->printData($nameProduct);
-
+	$nameProduct = $nameProduct[0]['Name'];
 	//Giá sản phẩm
 	$cost = 'SELECT Cost FROM Product where type="' . $_GET['type'] . '"';
 	$cost = $database->printData($cost);
@@ -65,57 +56,55 @@
 						<div class="product-details-img-content">
 							<div class="product-details-tab mr-35 product-details-tab2">
 								<div class="product-details-small nav mr-10 product-details-2" role="tablist">
-									<button class="btn-up" onclick="moveUp(<?php echo $length; ?> - 3)"><i class="fas fa-chevron-up"></i></button>
+									<button class="btn-up" onclick="moveUp(<?= $length ?> - 3)"><i class="fas fa-chevron-up"></i></button>
 									<?php
 									foreach ($pathIMGColor as $value) {
 										echo '<li><img class="img-item " src="./img/products/' . $value . '" alt="' . $value . '" onclick="change2main(event)"></li>';
 									}
 									?>
-									<button class="btn-down" onclick="moveDown(<?php echo $length; ?> - 3)" style="transform: translateY(<?php echo (($length - 1) * 150) - 30 ?>px);"><i class="fas fa-chevron-down"></i></button>
+									<button class="btn-down" onclick="moveDown(<?= $length ?> - 3)" style="transform: translateY(<?= (($length - 1) * 150) - 30 ?>px);"><i class="fas fa-chevron-down"></i></button>
 								</div>
-								<div class="product-details-large tab-content" style="background-image: url('img/products/<?php echo $pathIMGColor[0]; ?>');">
+								<div class="product-details-large tab-content" style="background-image: url('img/products/<?= $pathIMGColor[0]; ?>');">
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-12 col-lg-5 col-12">
 						<div class="product-details-content">
-							<h3><?php echo $nameProduct[0]['Name']; ?></h3>
+							<h3><?= $nameProduct ?></h3>
 
 							<div class="details-price">
-								<span><?php echo $database->vndFormat($cost); ?></span>
+								<span><?= vndFormat($cost) ?></span>
 							</div>
 							<div class="quick-view-select">
 								<div class="select-option-part">
 									<h5>Màu sắc</h5>
-									<?php
-									echo '<div class="product__color">';
-									foreach ($color as $value) {
-										echo '<div class="color color-' . $value . '" onClick="window.location=\'?type=' . $_GET['type'] . '&color=' . $value . '\';"></div>';
-									}
-									echo '</div>';
-									?>
+									<div class="product__color">
+										<?php
+										foreach ($color as $value) {
+											echo '<div class="color color-' . $value . '" onClick="window.location=\'?type=' . $_GET['type'] . '&color=' . $value . '\';"></div>';
+										}
+										?>
+									</div>
 								</div>
 								<div class="select-option-part">
 									<h5>Kích cỡ</h5>
-									<?php
-									echo '<div class="product__size">';
-									echo '<form class="size" action="module/addcart.php">';
-									//Gửi type
-									echo '<input type="radio" name="type" id="' . $_GET['type'] . '" checked value="' . $_GET['type'] . '">';
-									//Gửi màu
-									echo '<input type="radio" name="color" id="' . $_GET['color'] . '" checked value="' . $_GET['color'] . '">';
-									//Chọn size
-									foreach ($size as $value) {
-										echo '<input required type="radio" id="' . $value . '" name="size" value="' . $value . '">';
-										echo '<label for="' . $value . '">' . $value . '</label>';
-									}
-									echo '</div>';
-									?>
+									<div class="product__size">
+										<form class="size" action="module/addcart.php">
+											<?php
+												//Gửi type
+												echo '<input type="radio" name="type" id="' . $_GET['type'] . '" checked value="' . $_GET['type'] . '">';
+												//Gửi màu
+												echo '<input type="radio" name="color" id="' . $_GET['color'] . '" checked value="' . $_GET['color'] . '">';
+												//Chọn size
+												foreach ($size as $value) {
+													echo '<input required type="radio" id="' . $value . '" name="size" value="' . $value . '">';
+													echo '<label for="' . $value . '">' . $value . '</label>';
+												}
+											?>
+									</div>
 								</div>
-								<?php
-								echo '<p class="description">' . $description[0] . '</p>';
-								?>
+								<p class="description"><?= $description[0] ?></p>
 								<input type="submit" value="Thêm vào giỏ hàng">
 								</form>
 							</div>
@@ -176,15 +165,10 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 	</section>
-	<?php require_once('./module/footer.php'); ?>
+	<?php require_once './module/footer.php' ?>
 	<script src="./script/script.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
