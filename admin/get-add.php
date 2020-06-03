@@ -1,6 +1,5 @@
 <?php
 	require_once '../script/connectDB.php';
-	$database = new database();
 	if (empty($_POST['Description'])) {
 		$_POST['Description'] = '';
 	}

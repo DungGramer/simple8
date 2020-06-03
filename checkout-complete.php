@@ -1,9 +1,5 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) {
-		session_start();
-	}
 	require_once './script/connectDB.php';
-	$database = new database();
 	// Tạo ID random
 	function generatorID() {
 		return rand(0, 999999);

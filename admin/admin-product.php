@@ -13,7 +13,6 @@
 		<?php 
 			require_once 'admin-header.php';
 			require_once '../script/connectDB.php';
-			$database = new database();
 
 			$gender = 'SELECT * FROM Product WHERE Gender="'.$_GET['product'].'"';
 			$gender = $database->printData($gender, 'Gender');

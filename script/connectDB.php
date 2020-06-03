@@ -1,4 +1,7 @@
 <?php
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	class database {
 		private $user = "root";
 		private $password = "";
@@ -99,3 +102,4 @@
 		'nu' => 'Đồ Nữ',
 		'giay' => 'Giày'
 	];
+	$database = new database();

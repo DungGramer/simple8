@@ -1,10 +1,4 @@
-<?php
-	if (session_status() == PHP_SESSION_NONE) {
-		session_start();
-	}
-	require_once './script/connectDB.php';
-	$database = new database();
-?>
+<?php require_once './script/connectDB.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,28 +15,29 @@
 
 <body>
 	<?php
-			require_once './module/cover.php';
-			$search = $_GET['search'];
-			$query = "SELECT * FROM Product WHERE Product_id LIKE '%$search%' OR `Name` LIKE '%$search%' OR `Type` LIKE '%$search%' OR Color LIKE '%$search%' OR `Size` LIKE '%$search%' OR `Gender` LIKE '%$search%' GROUP BY Type";
-			$search = $database->printData($query);
+	require_once './module/cover.php';
+	require_once './module/vndFormat.php';
+	$search = $_GET['search'];
+	$query = "SELECT * FROM Product WHERE Product_id LIKE '%$search%' OR `Name` LIKE '%$search%' OR `Type` LIKE '%$search%' OR Color LIKE '%$search%' OR `Size` LIKE '%$search%' OR `Gender` LIKE '%$search%' GROUP BY Type";
+	$search = $database->printData($query);
 
-			//Nếu chỉ có 1 sản phẩm -> sang trang product 
-			if(count($search) == 1) {
-				header('Location:./product.php?type='.$search[0]['Type'].'&color='.$search[0]['Color'].'');
-			} else {
-				require_once './module/header.php';
-			}
-			//Màu sắc
-			$color = 'SELECT Color FROM Product WHERE Availibility=1';
-			$color = $database->printTypeProduct($color, 'Color');
-			//Kích cỡ
-			$size = 'SELECT Size FROM Product where Availibility=1';
-			$size = $database->printTypeProduct($size, 'Size');
-			$length = count($search);
+	//Nếu chỉ có 1 sản phẩm -> sang trang product 
+	if (count($search) == 1) {
+		header('Location:./product.php?type=' . $search[0]['Type'] . '&color=' . $search[0]['Color'] . '');
+	} else {
+		require_once './module/header.php';
+	}
+	//Màu sắc
+	$color = 'SELECT Color FROM Product WHERE Availibility=1';
+	$color = $database->printTypeProduct($color, 'Color');
+	//Kích cỡ
+	$size = 'SELECT Size FROM Product where Availibility=1';
+	$size = $database->printTypeProduct($size, 'Size');
+	$length = count($search);
 	?>
 	<!-- END HEADER -->
 	<?php
-		coverSection('', 'img/files/shop.jpg');
+	coverSection('', 'img/files/shop.jpg');
 	?>
 	<!-- END COVER -->
 
@@ -57,7 +52,6 @@
 							echo '<a href="?search=' . $value . '">';
 							echo '<div class="color color-' . $value . '" ></div>';
 							echo '</a>';
-
 						}
 						?>
 					</div>
@@ -75,20 +69,19 @@
 				</div>
 				<div class="col-lg-9">
 					<?php
-						for ($i = 0; $i < $length; $i++) {
-							echo '<div class="col-sm-6 col-md-4 col-lg-4 col-xs-12 float-left" style="width:100%;">';
-								echo '<div class="product-wrapper">';
-									echo '<a href="product.php?type=' . $search[$i]['Type'] . '&color=' . $search[$i]['Color'] . '">';
-									echo '<div class="product-img" style="background-image: url(' . '\'img/products/' . $search[$i]['Image'] . ' \'' . ')"></div>';
-									echo '<div class="product-content">';
-										echo '<h4>' . $search[$i]['Name'] . '</h4>';
-										echo '<span>' . number_format($search[$i]['Cost']) . ' vnđ</span>';
-									echo '</div>';
-									echo '</a>';
-								echo '</div>';
-							echo '</div>';
-						}
-					?>
+					for ($i = 0; $i < $length; $i++) : ?>
+						<div class="col-sm-6 col-md-4 col-lg-4 col-xs-12 float-left" style="width:100%;">
+							<div class="product-wrapper">
+								<a href="product.php?type=<?= $search[$i]['Type'] . '&color=' . $search[$i]['Color'] ?>">
+									<div class="product-img" style="background-image: url('img/products/<?= $search[$i]['Image'] ?>')"></div>
+									<div class="product-content">
+										<h4><?= $search[$i]['Name'] ?></h4>
+										<span><?= vndFormat($search[$i]['Cost']) ?></span>
+									</div>
+								</a>
+							</div>
+						</div>
+					<?php endfor ?>
 				</div>
 				<div class="col-lg-9">
 					<nav aria-label="page navigation">

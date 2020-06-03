@@ -8,8 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="styles/css/base.css">
 	<link rel="stylesheet" href="styles/css/cart.css">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<?php require_once './module/header-meta.php' ?>
 </head>
 
 <body>
@@ -19,7 +19,6 @@
 		require_once 'module/cover.php';
 		coverSection('Giỏ hàng', 'img/files/shop.jpg');
 	?>
-	
 	<!-- END COVER -->
 	<section class="cart">
 		<div class="container">
@@ -43,23 +42,24 @@
 								<tbody>
 									<?php
 									if (isset($_SESSION['cart'])) {
-										foreach ($_SESSION['cart'] as $key => $value) {
-											echo '<tr>';
-												echo '<td class="product-thumbnail">';
-													echo '<a href="#"><div class="img" style="background-image: url(' . '\'img/products/' . $value['image'] . ' \'' . ');"></div></a>';
-												echo '</td>';
-												echo '<td class="product-name"><a href="shop.php?search=' . $key . '">' . $value['name'] . ' </a></td>';
-												echo '<td class="product-type">' . $value['color'] . ' - ' . $value['size'] . ' </td>';
-												echo '<td class="product-price-cart"><span class="amount">' . $value['cost'] . '</span></td>';
-												echo '<td class="product-quantity">';
-													echo '<input value="' . $value['quantity'] . '" type="number" name="quantity[]" onclick="updateTotal()" min=1>';
-												echo '</td>';
-												echo '<td class="product-subtotal">' . vndFormat(vndtoNumber($value['cost']) * $value['quantity']) . '</td>';
-												echo '<td class="product-remove"><a href="module/delete-session.php?key=' . $key . '"><i class="far fa-times"></i></a></td>';
-											echo '</tr>';
-										}
-									}
-									?>
+										foreach ($_SESSION['cart'] as $key => $value) : ?>
+											<tr>
+												<td class="product-thumbnail">
+													<a href="#">
+														<div class="img" style="background-image: url('img/products/<?= $value['image'] ?>');"></div>
+													</a>
+												</td>
+												<td class="product-name"><a href="shop.php?search=<?= $key ?>"><?= $value['name'] ?></a></td>
+												<td class="product-type"><?= $value['color'] . ' - ' . $value['size'] ?></td>
+												<td class="product-price-cart"><span class="amount"><?= $value['cost'] ?></span></td>
+												<td class="product-quantity">
+													<input value="<?= $value['quantity'] ?>" type="number" name="quantity[]" onclick="updateTotal()" min=1>
+												</td>
+												<td class="product-subtotal"><?= vndFormat(vndtoNumber($value['cost']) * $value['quantity']) ?></td>
+												<td class="product-remove"><a href="module/delete-session.php?key=<?= $key ?>"><i class="far fa-times"></i></a></td>
+											</tr>
+									<?php endforeach;
+									} ?>
 								</tbody>
 							</table>
 						</div>
@@ -84,13 +84,12 @@
 					<div class="cart-page-total">
 						<h2>Tổng tiền</h2>
 						<ul>
-							<li>Tạm tính<span><?php echo vndFormat($_SESSION['total']); ?></span></li>
-							<li>Thành tiền<span class="total-final"><?php echo vndFormat($_SESSION['total']); ?></span></li>
+							<li>Tạm tính<span><?= vndFormat($_SESSION['total']) ?></span></li>
+							<li>Thành tiền<span class="total-final"><?= vndFormat($_SESSION['total']) ?></span></li>
 						</ul>
 						<?php
-						if (!isset($_SESSION['cart']) || !empty($_SESSION['cart'])) {
-							echo '<a href="checkout.php">Tiến hành đặt hàng</a>';
-						}
+							if (!isset($_SESSION['cart']) || !empty($_SESSION['cart']))
+								echo '<a href="checkout.php">Tiến hành đặt hàng</a>';
 						?>
 					</div>
 				</div>
@@ -98,8 +97,9 @@
 		</div>
 	</section>
 	<!-- END CART -->
-	<?php require_once 'module/footer.php'; ?>
+	<?php require_once 'module/footer.php' ?>
 	<!-- END FOOTER -->
 	<script src="script/updateTotal.js"></script>
 </body>
+
 </html>

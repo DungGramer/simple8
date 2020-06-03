@@ -3,14 +3,6 @@
 	if (session_status() == PHP_SESSION_NONE) {
     session_start();
 	}
-	echo "<pre>";
-	print_r($_SESSION);
-	echo "</pre>";
-
-	echo "<pre>";
-	print_r($_POST);
-	echo "</pre>";
-
 	$length = count($_SESSION['cart']);
 	$i = 0;
 	foreach ($_SESSION['cart'] as $key=>$value) {

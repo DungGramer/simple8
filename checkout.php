@@ -19,9 +19,7 @@
 	require_once 'module/vietnam_provinces.php';
 	require_once 'module/vndFormat.php';
 	require_once 'module/cover.php';
-	?>
-	<?php
-		coverSection('Thanh toán', 'img/files/shop.jpg');
+	coverSection('Thanh toán', 'img/files/shop.jpg');
 	?>
 	<!-- END COVER -->
 	<section class="billing">
@@ -47,14 +45,14 @@
 								<div class="col-md-12">
 									<div class="checkout-form-list">
 										<label>Họ tên <span class="required">*</span></label>
-										<input type="text" id="name" name="name" placeholder="Nhập họ tên" title="Vui lòng nhập đúng họ tên" pattern="[a-zA-Z]+"  required oninvalid="validate('name')" on>
+										<input type="text" id="name" name="name" placeholder="Nhập họ tên" title="Vui lòng nhập đúng họ tên" pattern="/[a-zA-Z]+/" required oninput="validate('name')">
 										<!--  oninvalid="this.setCustomValidity('Witinnovation')" onvalid="this.setCustomValidity('')"-->
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="checkout-form-list">
 										<label>Địa chỉ cụ thể <span class="required">*</span></label>
-										<input type="text" id="address" name="address" placeholder="Ví dụ: Ngõ 125, đường Minh Khai" pattern="[a-zA-Z0-9]+"  title="Vui lòng nhập đúng địa chỉ" required oninvalid="validate('address')">
+										<input type="text" id="address" name="address" placeholder="Ví dụ: Ngõ 125, đường Minh Khai" pattern="/[a-zA-Z0-9]+/" title="Vui lòng nhập đúng địa chỉ" required oninvalid="validate('address')">
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -85,38 +83,36 @@
 								</thead>
 								<tbody>
 									<?php
-									foreach ($_SESSION['cart'] as $value) {
-										echo '<tr class="cart_item">';
-										echo '<td class="product-name">' . $value['name'] . '<strong class="product-quantity"> × ' . $value['quantity'] . '</strong>';
-										echo '<p class="product-type">' . $value['color'] . ' - ' . $value['size'] . '</p>';
-										echo '</td>';
-										echo '<td class="product-total">';
-										echo '<span class="amount">' . vndFormat(vndtoNumber($value['cost']) * $value['quantity']) . '</span>';
-										echo '</td>';
-										echo '</tr>';
-									}
-									?>
+									foreach ((array)$_SESSION['cart'] as $value) : ?>
+										<tr class="cart_item">
+											<td class="product-name"><?= $value['name'] ?><strong class="product-quantity"> × <?= $value['quantity'] ?></strong>
+												<p class="product-type"><?= $value['color'] . ' - ' . $value['size'] ?></p>
+											</td>
+											<td class="product-total">
+												<span class="amount"><?= vndFormat(vndtoNumber($value['cost']) * $value['quantity']) ?></span>
+											</td>
+										</tr>
+									<?php endforeach; ?>
 								</tbody>
 								<tfoot>
 									<tr class="cart-subtotal">
 										<th>Tổng đơn hàng</th>
-										<td><span class="amount"><?php echo vndFormat($_SESSION['total']);  ?></span></td>
+										<td><span class="amount"><?= vndFormat($_SESSION['total']) ?></span></td>
 									</tr>
 									<tr class="order-total">
 										<th>Thanh toán</th>
-										<td><strong><span class="amount" style="color: rgb(238, 35, 71); "><?php echo vndFormat($_SESSION['total']);  ?></span></strong>
+										<td><strong><span class="amount" style="color: rgb(238, 35, 71); "><?= vndFormat($_SESSION['total']) ?></span></strong>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
 						</div>
 						<div class="order-button-payment">
-						<?php
-							if(!isset($_SESSION['cart']) || !empty($_SESSION['cart']) || $_SESSION['count'] == 0 || $_SESSION['total'] == 0){
+							<?php
+							if (!isset($_SESSION['cart']) || !empty($_SESSION['cart']) || $_SESSION['count'] == 0 || $_SESSION['total'] == 0) {
 								echo '<input id="submit" type="submit" value="Đặt hàng">';
 							}
-						?>
-							
+							?>
 						</div>
 						</form>
 					</div>
@@ -125,10 +121,7 @@
 		</div>
 	</section>
 	<!-- END BILLING -->
-	<?php
-	require_once 'module/footer.php';
-
-	?>
+	<?php require_once 'module/footer.php' ?>
 	<script src="script/validateForm.js"></script>
 </body>
 
